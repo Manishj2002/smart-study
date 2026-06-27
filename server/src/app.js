@@ -16,15 +16,10 @@ const app = express();
 // Middleware
 import cors from 'cors';
 
-app.use(cors({
-  origin: [
-    'https://smart-study-one-beta.vercel.app',   // Your Vercel URL
-    'http://localhost:5173',                     // For local development
-    'http://localhost:3000'
-  ],
-  credentials: true,        // If using cookies/auth
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+// Middleware
+app.use(cors({ 
+  origin: true,           // Allow all origins (temporary)
+  credentials: true 
 }));
 
 app.use(express.json());
@@ -46,7 +41,7 @@ app.get('/health', (req, res) => {
 });
 
 // API Routes
-app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
 app.use('/api/subjects', subjectRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/schedules', scheduleRoutes);
