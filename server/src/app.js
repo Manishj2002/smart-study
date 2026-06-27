@@ -14,9 +14,17 @@ dotenv.config();
 const app = express();
 
 // Middleware
+import cors from 'cors';
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
-  credentials: true
+  origin: [
+    'https://smart-study-one-beta.vercel.app',   // Your Vercel URL
+    'http://localhost:5173',                     // For local development
+    'http://localhost:3000'
+  ],
+  credentials: true,        // If using cookies/auth
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
