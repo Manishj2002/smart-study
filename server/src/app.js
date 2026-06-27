@@ -17,9 +17,16 @@ const app = express();
 import cors from 'cors';
 
 // Middleware
-app.use(cors({ 
-  origin: true,           // Allow all origins (temporary)
-  credentials: true 
+app.use(cors({
+  origin: [
+    'https://smart-study-git-main-manishj2002s-projects.vercel.app',
+    'https://smart-study-one-beta.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:3000'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
